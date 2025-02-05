@@ -15,7 +15,7 @@ async def change(update: Update, context: ContextTypes.DEFAULT_TYPE):
     file = await context.bot.get_file(file_id=id_)
     await file.download_to_drive('/dev/shm/hello')
     chat_id = update.message.chat_id
-    f = open("/tmp/bot/hello", "rb")
+    f = open("/dev/shm/hello", "rb")
     print("->>>>>>>>>>>>>>1")
     await context.bot.send_audio(chat_id, f, title="adnannnn", caption="karriiim")
     print("->>>>>>>>>>>>>>2")
