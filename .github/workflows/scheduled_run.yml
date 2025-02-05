@@ -1,0 +1,25 @@
+name: Run Every 6 Hours
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # Runs every 6 hours (at 00:00, 06:00, 12:00, 18:00 UTC)
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run Python script
+        run: python bot.py 
+
